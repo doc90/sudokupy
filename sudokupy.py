@@ -5,9 +5,8 @@
 # Some rights reserved   #
 ##########################
 
-def quadrante(s,r,c,n):
-    '''individua a quale quadrante si sta facendo riferimento e
-    restituisce true o false a seconda se n sia inseribile o meno'''
+def individua(s,r,c):
+    '''individua a quale quadrante si sta facendo riferimento'''
     if (r<3)&(c<3):         
         x1,x2,y1,y2=0,3,0,3
     elif (3<=r<6)&(c<3):
@@ -33,9 +32,11 @@ def quadrante(s,r,c,n):
         for y in range(y1,y2):
             l.append(s[x][y])
         q.append(l)
+    return q
     
-    
-        
+def quadrante(s,r,c,n):
+    '''controlla che sia inseribile nel quadrante'''
+    q=individua(s,r,c)
     for x in range(3):
         for y in range(3):
             if q[x][y]==n:
