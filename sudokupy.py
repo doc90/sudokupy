@@ -1,4 +1,3 @@
-# -*- coding: cp1252 -*-
 ##########################
 # SudokuPy 1.0 by Doc    #
 # http://filippogiomi.it #
@@ -66,7 +65,7 @@ def vuoti(s):
 
 def probabilita(s,r,c):
     '''restituisce una lista con i possibili numeri per quella casella.
-        se la casella è già stata riempita restituisce una lista vuota'''
+        se la casella e' gia' stata riempita restituisce una lista vuota'''
     numeri=[]
     if s[r][c]>0:
         return numeri
