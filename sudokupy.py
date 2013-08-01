@@ -101,7 +101,7 @@ def risolvi(s):
         messo=0
         for x in range(9):
             for y in range(9):
-                p= probabilita(s,x,y)
+                p=probabilita(s,x,y)
                 if len(p)==1:
                    s[x][y]=p[0]
                    messo=1
@@ -110,5 +110,42 @@ def risolvi(s):
                 break
     return s
 
-'esempio di utilizzo'
-disegna(risolvi(leggi('su.txt')))
+
+def cifre(s):
+    '''restituisce la cifra data dalla concatenazione
+    dei numeri presenti nelle prime tre celle'''
+    return int(str(s[0][0])+str(s[0][1])+str(s[0][2]))
+
+def leggieuler(path):
+    'simile alla funzione leggi(path) ma ritorna un array di sudoku'
+    f=open(path)
+    t = []
+    for line in f:
+        t.append(line)
+    z=[]
+    i=0
+    x=1
+    s=[]
+    while x<len(t):
+        if (t[x][0:4]=='Grid'):
+            i=0
+            z.append(s)
+            s=[]
+        else:
+            i+=1
+            l=[]
+            for y in range(9):
+                l.append(int(t[x][y]))         
+            s.append(l)
+        x+=1
+    z.append(s)
+    return z
+
+def euler96(z):
+    'restituisce la soluzione al problema 96 del project euler'
+    somma=0
+    for su in z:
+        somma+=cifre(risolvi(su))
+    print somma
+
+euler96(leggieuler('sudoku.txt'))
